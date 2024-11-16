@@ -18,7 +18,8 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://front-rckqmj66h-backup96s-projects.vercel.app", // Dominios permitidos
+    origin:
+      "https://front-5lex4bplt-backup96s-projects.vercel.app", // Dominios permitidos
     methods: "GET,POST,PUT,DELETE", // Métodos HTTP permitidos
     credentials: true, // Si necesitas enviar cookies o headers de autenticación
   })

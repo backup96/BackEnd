@@ -47,7 +47,12 @@ const routerPublic = (app, db, transporter) => {
 
   // Ruta para limpiar cookies creadas y cerrar sesión
   router.get("/logout", (req, res) => {
-    res.clearCookie("token");
+    res.clearCookie("token", {
+      httpOnly: true,
+      secure: true, // Debe coincidir con la configuración al crearla
+      sameSite: "strict",
+      path: "/", // Debe coincidir con el path original
+    });
     return res.json({ Status: "Success" });
   });
 

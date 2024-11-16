@@ -27,7 +27,7 @@ const routerPublic = (app, db, transporter) => {
   // Función para verificar una sesión iniciada
   const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
-    console.log(req)
+    console.log(req.Cookies)
     if (!token) {
       return res.json({ Error: "No hay una sesión iniciada" });
     } else {

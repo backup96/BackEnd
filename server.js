@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://front-end-roan-alpha.vercel.app/"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })

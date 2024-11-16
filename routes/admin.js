@@ -80,7 +80,11 @@ const routerAdmin = (app, db, transporter) => {
               const token = jwt.sign({ nombreUsuario }, "jwt-secret-key", {
                 expiresIn: "1d",
               });
-              res.cookie("token", token);
+              res.cookie("token", token, {
+                httpOnly: false,
+                secure: true,
+                sameSite: "none"
+              });
               return res.json({ Status: "Success" });
             } else {
               return res.json({ Error: "Las constraseñas no coinciden" });

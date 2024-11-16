@@ -12,7 +12,7 @@ import bcrypt from 'bcrypt';
 import { PORT, DATABASE_HOST, DATABASE_NAME, DATABASE_PASS, DATABASE_USER } from "./config.js";
 const saltRounds = 10;
 
-dotenv.config({ path: "./.env" });
+// dotenv.config({ path: "./.env" });
 
 const app = express();
 app.use(express.json());

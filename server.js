@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["https://front-end-roan-alpha.vercel.app/admin/login"],
+    origin: ["https://front-end-roan-alpha.vercel.app"],
     methods: ["GET", "POST", "PATCH", "DELETE"],
     credentials: true,
   })

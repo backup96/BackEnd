@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import crypto from "crypto";
 import bcrypt from "bcrypt";
+import { Console } from "console";
 
 const routerPublic = (app, db, transporter) => {
   const router = express.Router();
@@ -26,6 +27,7 @@ const routerPublic = (app, db, transporter) => {
   // Función para verificar una sesión iniciada
   const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
+    console.log(req)
     if (!token) {
       return res.json({ Error: "No hay una sesión iniciada" });
     } else {

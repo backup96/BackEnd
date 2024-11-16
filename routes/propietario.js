@@ -67,7 +67,12 @@ const routerPropietario = (app, db) => {
               const token = jwt.sign({ nombreUsuario }, "jwt-secret-key", {
                 expiresIn: "1d",
               });
-              res.cookie("token", token);
+              res.cookie("token", token, {
+                httpOnly: true,
+                secure: true, // Esto debe coincidir con el entorno en el que estás (https en producción)
+                sameSite: "none", // Configuración de SameSite
+                path: "/", // Importante para eliminar correctamente
+              });
               return res.json({ Status: "Success" });
             } else {
               return res.json({ Error: "Las constraseñas no coinciden" });

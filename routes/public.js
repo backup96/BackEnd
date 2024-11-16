@@ -50,7 +50,7 @@ const routerPublic = (app, db, transporter) => {
     res.clearCookie("token", {
       httpOnly: true,
       secure: true, // Debe coincidir con la configuración al crearla
-      sameSite: "strict",
+      sameSite: "none",
       path: "/", // Debe coincidir con el path original
     });
     return res.json({ Status: "Success" });

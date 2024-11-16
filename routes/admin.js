@@ -83,7 +83,7 @@ const routerAdmin = (app, db, transporter) => {
               res.cookie("token", token, {
                 httpOnly: true,
                 secure: true, // Esto debe coincidir con el entorno en el que estás (https en producción)
-                sameSite: "strict", // Configuración de SameSite
+                sameSite: "none", // Configuración de SameSite
                 path: "/", // Importante para eliminar correctamente
               });
               return res.json({ Status: "Success" });

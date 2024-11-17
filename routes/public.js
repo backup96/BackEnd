@@ -87,7 +87,7 @@ const routerPublic = (app, db, transporter) => {
             to: email,
             subject: "Recuperación de contraseña",
             text: `Has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para crear una nueva contraseña: 
-        http://localhost:3000/reset-password/${token}`,
+        https://front-end-roan-alpha.vercel.app/reset-password/${token}`,
           };
 
           // Enviar el correo

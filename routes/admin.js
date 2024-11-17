@@ -15,7 +15,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Ruta para confirmación de creación de cuenta
   router.post("/confirmAcc", (req, res) => {
-    console.log(req);
     const sql = "Call Inserción_Persona(?)";
     bcrypt.hash(req.body.NumeroDocumento.toString(), salt, (err, hash) => {
       if (err)
@@ -43,7 +42,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Ruta para negación de creación de cuenta
   router.post("/cancelAcc", (req, res) => {
-    console.log(req);
     const sql = "DELETE FROM solicitud WHERE NumDocumento = ?";
     const values = [req.body.NumeroDocumento];
     db.query(sql, [values], (err, data) => {
@@ -171,7 +169,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Insertar viviendas
   router.post("/postApartamentos", (req, res) => {
-    console.log(req.body);
     const sql = "Call Inserción_Apartamento(?)";
     const values = [req.body.Bloque, req.body.Torre, req.body.numAprt];
     db.query(sql, [values], (err, data) => {
@@ -185,7 +182,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Actualizar viviendas
   router.post("/patchApartamentos", (req, res) => {
-    console.log(req.body);
     const sql = "Call Actualización_Apartamento(?)";
     const values = [
       req.body.codApt,
@@ -204,7 +200,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar viviendas
   router.post("/deleteApartamentos", (req, res) => {
-    console.log(req.body);
     const sql = "DELETE FROM apartamento WHERE codigoVivienda = ?";
     const values = [req.body.codApt];
     db.query(sql, [values], (err, data) => {
@@ -247,7 +242,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Insertar propietarios
   router.post("/postPropietarios", (req, res) => {
-    console.log(req);
     const sql = "Call Inserción_Persona_Admin(?)";
     bcrypt.hash(req.body.NumeroDocumento.toString(), salt, (err, hash) => {
       if (err)
@@ -278,7 +272,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Actualizar propietarios
   router.post("/patchPropietarios", (req, res) => {
-    console.log(req.body);
     const sql = "Call Actualizacion_Propietarios(?)";
     const values = [
       req.body.NumeroDocumento,
@@ -304,7 +297,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar propietarios
   router.post("/deletePropietarios", (req, res) => {
-    console.log(req.body);
     const sql = "Call Eliminar_propietario(?)";
     const values = [req.body.NumeroDocumento];
     db.query(sql, [values], (err, data) => {
@@ -347,7 +339,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Insertar porteros
   router.post("/postPorteros", (req, res) => {
-    console.log(req);
     const sql = "Call Inserción_Portero(?)";
     bcrypt.hash(req.body.NumeroDocumento.toString(), salt, (err, hash) => {
       if (err)
@@ -373,7 +364,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Actualizar porteros
   router.post("/patchPorteros", (req, res) => {
-    console.log(req);
     const sql = "Call Actualizar_portero(?)";
     const values = [
       req.body.NumeroDocumento,
@@ -392,7 +382,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar porteros
   router.post("/deletePorteros", (req, res) => {
-    console.log(req.body);
     const sql = "Call Eliminar_Porteros(?)";
     const values = [req.body.NumeroDocumento];
     db.query(sql, [values], (err, data) => {
@@ -423,7 +412,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Consultar parqueaderos específico
   router.post("/getParqueaderoEsp1", (req, res) => {
-    console.log(req.body);
     const sql = "SELECT * FROM espacios_parqueadero WHERE numEspacio = ?";
     db.query(sql, [req.body.Term], (err, data) => {
       if (err) {
@@ -436,7 +424,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Consultar parqueaderos específico
   router.post("/getParqueaderoEsp2", (req, res) => {
-    console.log(req.body);
     const sql = "SELECT * FROM espacios_parqueadero WHERE tipoEspacio = ?";
     db.query(sql, [req.body.Term], (err, data) => {
       if (err) {
@@ -449,7 +436,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Insertar parqueaderos
   router.post("/postParqueadero", (req, res) => {
-    console.log(req);
     const sql = "Call Insertar_parqueadero(?)";
     const values = [req.body.NumeroEspacio, req.body.TipoEspacio];
     db.query(sql, [values], (err, data) => {
@@ -463,7 +449,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Actualizar propietarios
   router.post("/patchParqueadero", (req, res) => {
-    console.log(req.body);
     const sql = "Call Actualizar_parqueadero(?)";
     const values = [
       req.body.NumeroEspacio,
@@ -481,7 +466,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar propietarios
   router.post("/deleteParqueadero", (req, res) => {
-    console.log(req.body);
     const sql = "DELETE FROM espacios_parqueadero WHERE numEspacio = ?";
     const values = [req.body.NumeroEspacio];
     db.query(sql, [values], (err, data) => {
@@ -526,7 +510,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Inserción Invitados
   router.post("/postInvitados", (req, res) => {
-    console.log(req);
     const sql = "Call Inserción_Invitados(?)";
     bcrypt.hash(req.body.NumeroDocumento.toString(), salt, (err, hash) => {
       if (err)
@@ -553,7 +536,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Actualizar Invitados
   router.post("/patchInvitados", (req, res) => {
-    console.log(req.body);
     const sql = "Call Actualizar_Invitados(?)";
     const values = [
       req.body.Teléfono,
@@ -575,7 +557,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar Invitados
   router.post("/deleteInvitados", (req, res) => {
-    console.log(req.body);
     const sql = "Call Eliminar_Invitado(?)";
     const values = [req.body.NumeroDocumento];
     db.query(sql, [values], (err, data) => {
@@ -625,7 +606,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Eliminar Salon comunal
   router.post("/deleteReservaSalon", (req, res) => {
-    console.log(req.body);
     const sql = "DELETE FROM citas_salon_comunal WHERE Fecha = ?";
     const values = [req.body.DiaOld];
     db.query(sql, [values], (err, data) => {
@@ -654,7 +634,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Envio recibo Administración
   router.post("/sendInformacion", (req, res) => {
-    console.log(req.body);
     const fecha = new Date();
 
     var valPar;
@@ -738,7 +717,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Envio de Circulares
   router.post("/sendCircularInformacion", (req, res) => {
-    console.log(req.body);
 
     const mailOptions = {
       from: process.env.EMAIL,

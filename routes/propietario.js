@@ -15,7 +15,6 @@ const routerPropietario = (app, db) => {
 
   // Ruta para envio de solicitud de cuenta
   router.post("/register", upload.single("Archivo"), (req, res) => {
-    console.log(req);
     const { Nombre, Apellido, NumeroDocumento, Tel, Correo, CodigoVivienda } =
       req.body;
     const file = req.file.buffer;

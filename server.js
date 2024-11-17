@@ -164,7 +164,6 @@ app.post('/actualizar_perfil', (req, res) => {
     if (results.affectedRows === 0) {
       return res.status(404).json({ error: "Usuario no encontrado" });
     }
-    // console.log("Perfil actualizado:", results);
     res.json({ message: "Perfil actualizado exitosamente" });
   });
 });

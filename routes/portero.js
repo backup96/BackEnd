@@ -52,7 +52,6 @@ const routerPortero = (app, db, transporter) => {
 
   // Ruta para traer portero específico
   router.get("/getPorterosDetails", (req, res) => {
-    console.log(req.body);
     const sql = "SELECT * FROM get_porteros WHERE numDocumento = ?";
     db.query(sql, [req.body.numDocumento], (err, data) => {
       if (err) {
@@ -67,7 +66,6 @@ const routerPortero = (app, db, transporter) => {
 
   // Envio alerta de cronómetro
   router.post("/sendInformacion", (req, res) => {
-    console.log(req.body);
 
     const mailOptions = {
       from: process.env.EMAIL,
@@ -110,7 +108,6 @@ Portería del Conjunto Residencial Torres de Santa Isabel
 
   // Envio ticket
   router.post("/sendTicket", (req, res) => {
-    console.log(req.body);
 
     const mailOptions = {
       from: process.env.EMAIL,

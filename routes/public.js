@@ -77,11 +77,10 @@ const routerPublic = (app, db, transporter) => {
         const expiration = Date.now() + 3600000; // 1 hora
 
         db.query(sql2, [token, expiration, Usuario], (err) => {
-          if (err)
-            console.log(err)
-            return res.status(500).json({
-              error: "Error guardando el token en la base de datos",
-            });
+          if (err) {console.log(err);
+          return res.status(500).json({
+            error: "Error guardando el token en la base de datos",
+          });}
           // Configurar el correo electrónico
           const mailOptions = {
             from: process.env.EMAIL,

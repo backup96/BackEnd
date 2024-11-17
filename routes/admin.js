@@ -34,6 +34,46 @@ const routerAdmin = (app, db, transporter) => {
           return res
             .status(500)
             .json({ Error: "Error al enviar solicitud de registro" });
+        } else {
+          const mailOptions = {
+            from: process.env.EMAIL,
+            to: req.body.correo,
+            subject: "Credenciales para inicio de sesión",
+            html: `<div style="margin: 50px;">
+  <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 15px 15px 0px 0px;
+  background: #28a745; padding: 2px;">
+    <h2>CONJUNTO RESIDENCIAL TORRES DE SANTA ISABEL</h2>      
+  </div>
+
+  <div style="margin: 15px">
+    <p>
+      Un cordial saludo,<br><br>
+      Nos complace informarle que su solicitud de creación de cuenta en nuestra aplicación web ha sido aprobada. A continuación, encontrará los detalles de acceso a su cuenta:<br><br>
+      <strong>Nombre de usuario:</strong> ${req.body.Nombre}${req.body.Apellido}${req.body.NumeroDocumento}<br>
+      <strong>Contraseña:</strong> ${req.body.NumeroDocumento}<br><br>
+      Por motivos de seguridad, le recomendamos cambiar su contraseña desde su cuenta en la aplicación tras iniciar sesión por primera vez.<br><br>
+      Si tiene alguna pregunta o necesita ayuda adicional, no dude en ponerse en contacto con la administración.<br><br>
+      Atentamente, <br><br>
+      Administración del Conjunto Residencial Torres de Santa Isabel
+    </p>
+  </div>
+
+  <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 0px 0px 15px 15px;
+  background: #ff856b; padding: 2px;">
+    <p>uralitasigloxxi@gmail.com</p>
+    <p>Tel: 601 747 9393</p>   
+    <p>Cl. 9 Sur #26-32, Bogotá</p>        
+  </div>
+</div>
+
+`,
+          };
+
+          // Enviar el correo
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) console.log(error);
+            return res.json({ message: "Correo enviado con éxito" });
+          });
         }
         return res.json({ Status: "Success" });
       });
@@ -257,16 +297,16 @@ const routerAdmin = (app, db, transporter) => {
         req.body.Placa,
         hash,
       ];
-      if (req.body.EspacioParqueadero === ''){
-        values[6] = null
+      if (req.body.EspacioParqueadero === "") {
+        values[6] = null;
       }
-        db.query(sql, [values], (err, data) => {
-          if (err) {
-            console.error(err.code); // Muestra el error en el servidor
-            return res.status(500).json({ Error: err.code });
-          }
-          return res.json({ Status: "Success" });
-        });
+      db.query(sql, [values], (err, data) => {
+        if (err) {
+          console.error(err.code); // Muestra el error en el servidor
+          return res.status(500).json({ Error: err.code });
+        }
+        return res.json({ Status: "Success" });
+      });
     });
   });
 
@@ -717,7 +757,6 @@ const routerAdmin = (app, db, transporter) => {
 
   // Envio de Circulares
   router.post("/sendCircularInformacion", (req, res) => {
-
     const mailOptions = {
       from: process.env.EMAIL,
       to: req.body.correo,

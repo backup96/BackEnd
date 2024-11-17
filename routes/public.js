@@ -78,6 +78,7 @@ const routerPublic = (app, db, transporter) => {
 
         db.query(sql2, [token, expiration, Usuario], (err) => {
           if (err)
+            console.log(err)
             return res.status(500).json({
               error: "Error guardando el token en la base de datos",
             });

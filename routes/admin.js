@@ -37,7 +37,7 @@ const routerAdmin = (app, db, transporter) => {
         } else {
           const mailOptions = {
             from: process.env.EMAIL,
-            to: req.body.correo,
+            to: req.body.Correo,
             subject: "Credenciales para inicio de sesión",
             html: `<div style="margin: 50px;">
   <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 15px 15px 0px 0px;

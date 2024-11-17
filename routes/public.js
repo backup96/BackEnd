@@ -60,7 +60,7 @@ const routerPublic = (app, db, transporter) => {
     const email = req.body.Correo;
     const sql1 = "SELECT * FROM reset_pass_view WHERE correo = ?";
     const sql2 =
-      "INSERT INTO Reset_Pass (token, expiración, idUsuario_FK) VALUES (?, ?, ?)";
+      "INSERT INTO reset_pass (token, expiración, idUsuario_FK) VALUES (?, ?, ?)";
     db.query(sql1, [email], (err, data) => {
       if (err) {
         console.error("Error en la consulta:", err); // Muestra el error en el servidor

@@ -86,8 +86,40 @@ const routerPublic = (app, db, transporter) => {
             from: process.env.EMAIL,
             to: email,
             subject: "Recuperación de contraseña",
-            text: `Has solicitado restablecer tu contraseña. Haz clic en el siguiente enlace para crear una nueva contraseña: 
-        https://front-end-roan-alpha.vercel.app/#/reset-password/${token}`,
+            html: `<div style="margin: 50px;">
+  <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 15px 15px 0px 0px;
+  background: #28a745; padding: 2px;">
+    <h2>CONJUNTO RESIDENCIAL TORRES DE SANTA ISABEL</h2>      
+  </div>
+
+  <div style="margin: 15px">
+    <p>
+      Un cordial saludo residente de Torres de Santa Isabel,<br><br>
+      Hemos recibido una solicitud para restablecer la contraseña asociada a su cuenta.<br><br>
+      Si no realizó esta solicitud, puede ignorar este correo. Sin embargo, si desea proceder, por favor haga clic en el botón a continuación para restablecer su contraseña:<br><br>
+    </p>
+    <div style="text-align: center; margin: 20px 0;">
+      <a href="
+        https://front-end-roan-alpha.vercel.app/#/reset-password/${token}" style="text-decoration: none;">
+        <button style="background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;">
+          Restablecer Contraseña
+        </button>
+      </a>
+    </div>
+    <p>
+      Si tiene alguna pregunta o necesita ayuda adicional, no dude en ponerse en contacto con la administración.<br><br>
+      Atentamente, <br><br>
+      Administración del Conjunto Residencial Torres de Santa Isabel
+    </p>
+  </div>
+
+  <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 0px 0px 15px 15px;
+  background: #ff856b; padding: 2px;">
+    <p>uralitasigloxxi@gmail.com</p>
+    <p>Tel: 601 747 9393</p>   
+    <p>Cl. 9 Sur #26-32, Bogotá</p>        
+  </div>
+</div>`,
           };
 
           // Enviar el correo

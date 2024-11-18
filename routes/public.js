@@ -100,7 +100,7 @@ const routerPublic = (app, db, transporter) => {
     </p>
     <div style="text-align: center; margin: 20px 0;">
       <a href="
-        https://front-end-roan-alpha.vercel.app/#/reset-password/${token}" style="text-decoration: none;">
+        https://front-end-backup96s-projects.vercel.app/#/reset-password/${token}" style="text-decoration: none;">
         <button style="background: #28a745; color: white; border: none; padding: 10px 20px; font-size: 16px; border-radius: 5px; cursor: pointer;">
           Restablecer Contraseña
         </button>

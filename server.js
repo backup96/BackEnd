@@ -18,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://front-end-roan-alpha.vercel.app", // Dominios permitidos
+    origin: "https://front-end-backup96s-projects.vercel.app", // Dominios permitidos
     methods: "GET,POST,PUT,DELETE", // Métodos HTTP permitidos
     credentials: true, // Si necesitas enviar cookies o headers de autenticación
   })

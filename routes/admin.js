@@ -798,7 +798,7 @@ Administración del Conjunto Residencial Torres de Santa Isabel
   //----------------------------------------------------//
   // Consultar Espacios rentados
   router.get("/getEspRent", (req, res) => {
-    const sql = "SELECT * FROM get_EspRent";
+    const sql = "SELECT * FROM get_esprent";
     db.query(sql, (err, data) => {
       if (err) {
         console.error("Error en la consulta:", err); // Muestra el error en el servidor

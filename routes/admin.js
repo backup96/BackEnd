@@ -679,12 +679,12 @@ const routerAdmin = (app, db, transporter) => {
   // Envio de Circulares
   router.post("/sendCircularInformacion", upload.single("file"), (req, res) => {
     const { text, recipients } = req.body;
-    const recipientsList = JSON.parse(recipients);
+    // const recipientsList = JSON.parse(recipients);
     const file = req.file.buffer;
-    console.log(recipientsList);
+    console.log(recipients);
     const mailOptions = {
       from: process.env.EMAIL,
-      to: recipientsList.map((r) => r.correo).join(","),
+      to: "davidmoreno200610@gmail.com",
       subject: "Circular informativa",
       html: `<div style="margin: 50px;">
   <div style="font-family: Arial, sans-serif; text-align: center; color: white;  border-radius: 15px 15px 0px 0px;

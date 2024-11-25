@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { YearMonth } from "../DateTime.js";
+import multer from "multer";
 
 const routerAdmin = (app, db, transporter) => {
   const router = express.Router();
@@ -12,6 +13,9 @@ const routerAdmin = (app, db, transporter) => {
   const salt = 10;
 
   const curMonthYear = YearMonth();
+
+    const storage = multer.memoryStorage(); // Almacenar el archivo en memoria
+    const upload = multer({ storage: storage });
 
   // Ruta para confirmación de creación de cuenta
   router.post("/confirmAcc", (req, res) => {
@@ -673,11 +677,13 @@ const routerAdmin = (app, db, transporter) => {
   });
 
   // Envio de Circulares
-  router.post("/sendCircularInformacion", (req, res) => {
-    console.log(req.body)
+  router.post("/sendCircularInformacion", upload.single("file"), (req, res) => {
+    console.log(file);
+    const { correo, nombre, codVivi, codPer, numPar, text } = req.body;
+    const file = req.file.buffer;
     const mailOptions = {
       from: process.env.EMAIL,
-      to: req.body.correo,
+      to: correo,
       subject: "Circular informativa",
       html: `<div style="margin: 50px;">
   <div style="font-family: Arial, sans-serif; text-align: center; color: white;  border-radius: 15px 15px 0px 0px;
@@ -688,7 +694,7 @@ const routerAdmin = (app, db, transporter) => {
 <div style="margin: 15px">
       <p>
         Un cordial saludo residentes de Torres de Santa Isabel<br><br>
-        El presente correo es para informar que  ${req.body.text}<br><br>
+        El presente correo es para informar que  ${text}<br><br>
 
         Agradecemos su atención a esta circular y quedamos atentos a cualquier duda o comentario.<br><br>
 Atentamente, <br><br>

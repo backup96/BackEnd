@@ -678,9 +678,9 @@ const routerAdmin = (app, db, transporter) => {
 
   // Envio de Circulares
   router.post("/sendCircularInformacion", upload.single("file"), (req, res) => {
-    console.log(file);
     const { correo, nombre, codVivi, codPer, numPar, text } = req.body;
     const file = req.file.buffer;
+    console.log(file);
     const mailOptions = {
       from: process.env.EMAIL,
       to: correo,

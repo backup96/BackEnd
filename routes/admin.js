@@ -713,7 +713,7 @@ Administración del Conjunto Residencial Torres de Santa Isabel
       attachments: [
         {
           filename: req.file.name,
-          path: file, // Ruta temporal del archivo
+          content: file, // Ruta temporal del archivo
         },
       ],
     };

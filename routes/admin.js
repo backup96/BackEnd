@@ -672,89 +672,6 @@ const routerAdmin = (app, db, transporter) => {
     });
   });
 
-  // Envio recibo Administración
-  router.post("/sendInformacion", (req, res) => {
-    const fecha = new Date();
-
-    var valPar;
-
-    if (req.body.numPar === null) {
-      valPar = 0.0;
-    } else {
-      valPar = 3.0;
-    }
-
-    const mailOptions = {
-      from: process.env.EMAIL,
-      to: req.body.correo,
-      subject: "Recibo de pago de administración",
-      html: `<div style="margin: 50px;">
-  <div style="font-family: Arial, sans-serif; text-align: center; color: white; border-radius: 15px;
-  background: #28a745; padding: 2px;">
-        <h2 >CONJUNTO RESIDENCIAL TORRES DE SANTA ISABEL</h2>
-        <p>Cl. 9 Sur #26-32</p>
-        <p>Tel: 601 747 9393</p>     
-  </div>
-
-<div style="margin: 15px">
-<table style="width: 100%; border-spacing: 0; font-family: Arial, sans-serif;">
-    <tr>
-      <td style="text-align: left; vertical-align: top;">
-        <p>Mes: ${curMonthYear.Mes} de ${curMonthYear.Year}</p>
-        <p>Fecha: ${fecha.toLocaleDateString()}</p>
-      </td>
-      <td style="text-align: right; vertical-align: top;">
-        <p>Cuenta de cobro</p>
-        <p>No. 15.905</p>
-      </td>
-    </tr>
-  </table>
-
-  <hr>
-
-  <table style="width: 100%; border-spacing: 0; font-family: Arial, sans-serif;">
-    <tr>
-      <td style="text-align: left;">
-        <p>Nombre: ${req.body.nombre}</p>
-        <p>Numero de vivienda: ${req.body.codVivi}</p>
-      </td>
-      <td style="text-align: right;">
-        <p>Código: ${req.body.codPer}</p>
-      </td>
-    </tr>
-  </table>
-
-  <table style="width: 100%;  border-collapse: collapse;">
-  <tr style="border: 1px solid;">
-    <th style="border: 1px solid;">Concepto</th>
-    <th>Saldo</th>
-  </tr>
-  <tr>
-    <td>Administración</td>
-    <td>60.000</td>
-  </tr>
-  <tr style="border-bottom: 1px solid;">
-    <td>Parqueadero</td>
-    <td>${valPar}.000</td>
-  </tr>
-  <tr>
-    <td>Total</td>
-    <td>${60 + valPar}.000</td>
-  </tr>
-</table>
-</div>
-
-</div>
-`,
-    };
-
-    // Enviar el correo
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) console.log(error);
-      return res.json({ message: "Correo enviado con éxito" });
-    });
-  });
-
   // Envio de Circulares
   router.post("/sendCircularInformacion", (req, res) => {
     const mailOptions = {
@@ -786,6 +703,12 @@ Administración del Conjunto Residencial Torres de Santa Isabel
 
 </div>
 `,
+      attachments: [
+        {
+          filename: req.file.originalname,
+          path: req.file.path, // Ruta temporal del archivo
+        },
+      ],
     };
 
     // Enviar el correo

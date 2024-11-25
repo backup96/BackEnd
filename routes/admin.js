@@ -674,6 +674,7 @@ const routerAdmin = (app, db, transporter) => {
 
   // Envio de Circulares
   router.post("/sendCircularInformacion", (req, res) => {
+    console.log(req.body)
     const mailOptions = {
       from: process.env.EMAIL,
       to: req.body.correo,
@@ -705,8 +706,8 @@ Administración del Conjunto Residencial Torres de Santa Isabel
 `,
       attachments: [
         {
-          filename: req.file.name,
-          path: req.file.webkitRelativePath, // Ruta temporal del archivo
+          filename: req.body.file.name,
+          path: req.body.file.webkitRelativePath, // Ruta temporal del archivo
         },
       ],
     };

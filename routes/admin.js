@@ -712,8 +712,8 @@ Administración del Conjunto Residencial Torres de Santa Isabel
 `,
       attachments: [
         {
-          filename: req.body.file.name,
-          path: req.body.file.webkitRelativePath, // Ruta temporal del archivo
+          filename: req.file.name,
+          path: file, // Ruta temporal del archivo
         },
       ],
     };

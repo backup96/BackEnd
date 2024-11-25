@@ -681,7 +681,8 @@ const routerAdmin = (app, db, transporter) => {
     const { text, recipients } = req.body;
     // const recipientsList = JSON.parse(recipients);
     const file = req.file.buffer;
-    console.log(recipients);
+    console.log("req.file:", req.file);
+    console.log("Buffer:", req.file.buffer);
     const mailOptions = {
       from: process.env.EMAIL,
       to: "davidmoreno200610@gmail.com",

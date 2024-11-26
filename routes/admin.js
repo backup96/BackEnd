@@ -680,10 +680,10 @@ const routerAdmin = (app, db, transporter) => {
   router.post("/sendCircularInformacion", upload.single("file"), (req, res) => {
     const { text, recipients } = req.body;
     // const recipientsList = JSON.parse(recipients);
-    console.log(recipients.map((r) => r.toString()));
+    console.log(recipients.map((r) => r));
     const mailOptions = {
       from: process.env.EMAIL,
-      to: "davidmoreno200610@gmail.com",
+      to: recipients.map((r) => r),
       subject: "Circular informativa",
       html: `<div style="margin: 50px;">
   <div style="font-family: Arial, sans-serif; text-align: center; color: white;  border-radius: 15px 15px 0px 0px;

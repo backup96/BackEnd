@@ -680,7 +680,7 @@ const routerAdmin = (app, db, transporter) => {
   router.post("/sendCircularInformacion", upload.single("file"), (req, res) => {
     const { text, recipients } = req.body;
     // const recipientsList = JSON.parse(recipients);
-    console.log(recipients.map((r) => r));
+    console.log(recipients.map((r) => r[0]));
     const mailOptions = {
       from: process.env.EMAIL,
       to: "davidmoreno200610@gmail.com",

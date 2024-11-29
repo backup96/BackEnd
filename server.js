@@ -192,7 +192,7 @@ app.get("/espacios_parqueadero", (req, res) => {
 });
 // Ruta para obtener los invitados
 app.get('/invitados', (req, res) => {
-  const query = 'SELECT * FROM vista_invitados';
+  const query = 'SELECT * FROM get_invitados';
 
   db.query(query, (error, results) => {
     if (error) {
